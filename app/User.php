@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Task;
 
 class User extends Authenticatable
 {
@@ -23,4 +24,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * User has many tasks
+     *@return Tasks Collection
+     */
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
